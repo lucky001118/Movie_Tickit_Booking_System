@@ -3,7 +3,7 @@
 This project is a **Hibernate-based application** designed to facilitate online movie ticket bookings. The system is designed to manage theaters, movies, shows, and bookings, ensuring a seamless experience for both customers and administrators. Below is an overview of the system and its features.
 
 ## ER Diagram
-![ER Diagram](./Screenshot%20(263).png)
+![ER Diagram](src/main/resources/Er_digram_of_Tables.png)
 
 The above ER diagram represents the database structure for this project.
 
