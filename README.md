@@ -1,6 +1,3 @@
- ## Movie Ticket Booking System 
-
-```markdown
 # Movie Ticket Booking System
 
 This project is a **Hibernate-based application** designed to facilitate online movie ticket bookings. The system is designed to manage theaters, movies, shows, and bookings, ensuring a seamless experience for both customers and administrators. Below is an overview of the system and its features.
