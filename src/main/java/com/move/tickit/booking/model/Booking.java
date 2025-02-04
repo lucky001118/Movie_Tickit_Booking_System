@@ -45,7 +45,7 @@ public class Booking {
     private LocalDate booking_date;
 
     @Column(nullable = false)
-    private String status; // CONFIRMED, CANCELLED
+    private Status status; // CONFIRMED, CANCELLED
 
     @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
     private Payment payment;
@@ -90,11 +90,11 @@ public class Booking {
 		this.booking_date = booking_date;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -106,7 +106,7 @@ public class Booking {
 		this.payment = payment;
 	}
 
-	public Booking(int id, User user, Show show, Seat seat, LocalDate booking_date, String status, Payment payment) {
+	public Booking(int id, User user, Show show, Seat seat, LocalDate booking_date, Status status, Payment payment) {
 		super();
 		this.id = id;
 		this.user = user;

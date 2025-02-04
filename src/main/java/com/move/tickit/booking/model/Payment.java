@@ -36,7 +36,7 @@ public class Payment {
     private double amount;
 
     @Column(nullable = false)
-    private String payment_status; // SUCCESS, FAILED
+    private PaymentStatus payment_status; // SUCCESS, FAILED
 
     @Column(nullable = false)
     private LocalDate payment_date;
@@ -65,11 +65,11 @@ public class Payment {
 		this.amount = amount;
 	}
 
-	public String getPayment_status() {
+	public PaymentStatus getPayment_status() {
 		return payment_status;
 	}
 
-	public void setPayment_status(String payment_status) {
+	public void setPayment_status(PaymentStatus payment_status) {
 		this.payment_status = payment_status;
 	}
 
@@ -81,7 +81,7 @@ public class Payment {
 		this.payment_date = payment_date;
 	}
 
-	public Payment(int id, Booking booking, double amount, String payment_status, LocalDate payment_date) {
+	public Payment(int id, Booking booking, double amount, PaymentStatus payment_status, LocalDate payment_date) {
 		super();
 		this.id = id;
 		this.booking = booking;

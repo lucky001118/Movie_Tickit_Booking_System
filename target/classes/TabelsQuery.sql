@@ -184,3 +184,219 @@ JOIN shows sh ON m.id = sh.movie_id
 JOIN screens s ON sh.screen_id = s.id
 JOIN theaters t ON s.theater_id = t.id;
 
+select * from seats;
+desc seats;
+
+select * from screens;
+
+select * from theaters;
+update  theaters set location = 'Bhilai' where id = 1;
+
+
+-- know the available seats of any specific mavie title
+SELECT 
+    s.seat_number,
+    s.seat_type,
+    sc.screen_name,
+    m.title AS movie_name,
+    sh.show_time,
+    sc.screen_name as screen
+FROM 
+    seats s
+INNER JOIN 
+    screens sc ON s.screen_id = sc.id
+INNER JOIN 
+    shows sh ON sc.id = sh.screen_id
+INNER JOIN 
+    movies m ON sh.movie_id = m.id
+WHERE 
+    m.title = 'Inception'
+    AND s.id NOT IN (
+        SELECT seat_id 
+        FROM bookings 
+        WHERE show_id = sh.id
+    )
+ORDER BY 
+    sh.show_time, s.seat_number;
+
+
+-- dummy values for the seat table
+INSERT INTO seats (screen_id, seat_number, seat_type) VALUES
+-- Screen 1
+(1, 'A1', 'REGULAR'),
+(1, 'A2', 'REGULAR'),
+(1, 'A3', 'PREMIUM'),
+(1, 'A4', 'PREMIUM'),
+(1, 'A5', 'VIP'),
+(1, 'A6', 'REGULAR'),
+(1, 'B1', 'REGULAR'),
+(1, 'B2', 'PREMIUM'),
+(1, 'B3', 'PREMIUM'),
+(1, 'B4', 'VIP'),
+(1, 'B5', 'VIP'),
+(1, 'C1', 'REGULAR'),
+(1, 'C2', 'REGULAR'),
+(1, 'C3', 'PREMIUM'),
+(1, 'C4', 'PREMIUM'),
+(1, 'C5', 'VIP'),
+(1, 'C6', 'REGULAR'),
+(1, 'D1', 'REGULAR'),
+(1, 'D2', 'PREMIUM'),
+(1, 'D3', 'VIP'),
+(1, 'D4', 'REGULAR'),
+(1, 'D5', 'PREMIUM'),
+(1, 'E1', 'REGULAR'),
+(1, 'E2', 'REGULAR'),
+(1, 'E3', 'PREMIUM'),
+(1, 'E4', 'VIP'),
+(1, 'E5', 'VIP'),
+(1, 'F1', 'REGULAR'),
+(1, 'F2', 'REGULAR'),
+(1, 'F3', 'PREMIUM'),
+(1, 'F4', 'VIP'),
+(1, 'F5', 'PREMIUM'),
+(1, 'G1', 'REGULAR'),
+(1, 'G2', 'VIP'),
+(1, 'G3', 'PREMIUM'),
+(1, 'G4', 'REGULAR'),
+(1, 'G5', 'PREMIUM'),
+(1, 'H1', 'REGULAR'),
+(1, 'H2', 'REGULAR'),
+(1, 'H3', 'PREMIUM'),
+(1, 'H4', 'VIP'),
+
+-- Screen 2
+(2, 'A1', 'REGULAR'),
+(2, 'A2', 'REGULAR'),
+(2, 'A3', 'PREMIUM'),
+(2, 'A4', 'VIP'),
+(2, 'A5', 'REGULAR'),
+(2, 'B1', 'REGULAR'),
+(2, 'B2', 'PREMIUM'),
+(2, 'B3', 'VIP'),
+(2, 'B4', 'REGULAR'),
+(2, 'B5', 'PREMIUM'),
+(2, 'C1', 'REGULAR'),
+(2, 'C2', 'REGULAR'),
+(2, 'C3', 'PREMIUM'),
+(2, 'C4', 'PREMIUM'),
+(2, 'C5', 'VIP'),
+(2, 'C6', 'REGULAR'),
+(2, 'D1', 'REGULAR'),
+(2, 'D2', 'PREMIUM'),
+(2, 'D3', 'VIP'),
+(2, 'D4', 'REGULAR'),
+(2, 'E1', 'REGULAR'),
+(2, 'E2', 'PREMIUM'),
+(2, 'E3', 'VIP'),
+(2, 'E4', 'REGULAR'),
+(2, 'E5', 'PREMIUM'),
+(2, 'F1', 'REGULAR'),
+(2, 'F2', 'VIP'),
+(2, 'F3', 'PREMIUM'),
+(2, 'F4', 'REGULAR'),
+(2, 'F5', 'VIP'),
+(2, 'G1', 'REGULAR'),
+(2, 'G2', 'REGULAR'),
+(2, 'G3', 'PREMIUM'),
+(2, 'G4', 'VIP'),
+(2, 'G5', 'PREMIUM'),
+(2, 'H1', 'REGULAR'),
+(2, 'H2', 'VIP'),
+(2, 'H3', 'PREMIUM'),
+(2, 'H4', 'REGULAR'),
+
+-- Screen 3
+(3, 'A1', 'REGULAR'),
+(3, 'A2', 'PREMIUM'),
+(3, 'A3', 'VIP'),
+(3, 'A4', 'REGULAR'),
+(3, 'A5', 'PREMIUM'),
+(3, 'B1', 'REGULAR'),
+(3, 'B2', 'REGULAR'),
+(3, 'B3', 'PREMIUM'),
+(3, 'B4', 'VIP'),
+(3, 'B5', 'REGULAR'),
+(3, 'C1', 'REGULAR'),
+(3, 'C2', 'REGULAR'),
+(3, 'C3', 'PREMIUM'),
+(3, 'C4', 'PREMIUM'),
+(3, 'C5', 'VIP'),
+(3, 'D1', 'REGULAR'),
+(3, 'D2', 'PREMIUM'),
+(3, 'D3', 'VIP'),
+(3, 'D4', 'REGULAR'),
+(3, 'E1', 'REGULAR'),
+(3, 'E2', 'PREMIUM'),
+(3, 'E3', 'VIP'),
+(3, 'E4', 'REGULAR'),
+(3, 'E5', 'PREMIUM'),
+(3, 'F1', 'REGULAR'),
+(3, 'F2', 'VIP'),
+(3, 'F3', 'PREMIUM'),
+(3, 'F4', 'REGULAR'),
+(3, 'G1', 'REGULAR'),
+(3, 'G2', 'PREMIUM'),
+(3, 'G3', 'VIP'),
+(3, 'G4', 'REGULAR'),
+(3, 'H1', 'REGULAR'),
+(3, 'H2', 'VIP'),
+
+-- Screen 4
+(4, 'A1', 'REGULAR'),
+(4, 'A2', 'REGULAR'),
+(4, 'A3', 'PREMIUM'),
+(4, 'A4', 'VIP'),
+(4, 'B1', 'REGULAR'),
+(4, 'B2', 'PREMIUM'),
+(4, 'B3', 'VIP'),
+(4, 'B4', 'REGULAR'),
+(4, 'C1', 'REGULAR'),
+(4, 'C2', 'PREMIUM'),
+(4, 'C3', 'VIP'),
+(4, 'C4', 'REGULAR'),
+(4, 'D1', 'REGULAR'),
+(4, 'D2', 'PREMIUM'),
+(4, 'D3', 'VIP'),
+(4, 'D4', 'REGULAR'),
+(4, 'E1', 'REGULAR'),
+(4, 'E2', 'PREMIUM'),
+(4, 'E3', 'VIP'),
+(4, 'E4', 'REGULAR');
+
+-- booking
+select * from bookings;
+select * from payments;
+
+-- booking records by user id
+SELECT 
+    b.id AS booking_id,
+    u.name AS user_name,
+    u.email AS user_email,
+    m.title AS movie_title,
+    m.genre AS movie_genre,
+    m.language AS movie_language,
+    s.show_time,
+    s.ticket_price,
+    seats.seat_number,
+    seats.seat_type,
+    b.booking_date,
+    b.status
+FROM 
+    bookings b
+JOIN 
+    users u ON b.user_id = u.id
+JOIN 
+    shows s ON b.show_id = s.id
+JOIN 
+    movies m ON s.movie_id = m.id
+JOIN 
+    seats ON b.seat_id = seats.id
+WHERE 
+    b.user_id = 1;
+    
+    -- search movie id by movie title
+    
+
+
+

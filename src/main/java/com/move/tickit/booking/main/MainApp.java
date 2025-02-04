@@ -12,7 +12,5 @@ public class MainApp {
 		WelcomePage welcome = new WelcomePage();
 		welcome.welocme();
 		welcome.lists();
-		
-        
     }
 }
