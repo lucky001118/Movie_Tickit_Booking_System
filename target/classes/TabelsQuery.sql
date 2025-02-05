@@ -210,7 +210,7 @@ INNER JOIN
 INNER JOIN 
     movies m ON sh.movie_id = m.id
 WHERE 
-    m.title = 'Inception'
+    m.title = 'Interstellar'
     AND s.id NOT IN (
         SELECT seat_id 
         FROM bookings 
@@ -365,6 +365,7 @@ INSERT INTO seats (screen_id, seat_number, seat_type) VALUES
 (4, 'E4', 'REGULAR');
 
 -- booking
+select * from movies;
 select * from bookings;
 select * from payments;
 
@@ -395,8 +396,45 @@ JOIN
 WHERE 
     b.user_id = 1;
     
-    -- search movie id by movie title
+    -- search seat id by giving it movie title and seat number of the wosh 
+    SELECT 
+    s.id AS seat_id
+FROM 
+    seats s
+INNER JOIN 
+    screens sc ON s.screen_id = sc.id
+INNER JOIN 
+    shows sh ON sc.id = sh.screen_id
+INNER JOIN 
+    movies m ON sh.movie_id = m.id
+WHERE 
+    m.title = 'Inception'
+    AND s.seat_number = 'A1'
+    AND sh.id NOT IN (
+        SELECT b.show_id 
+        FROM bookings b 
+        WHERE b.seat_id = s.id
+    )
+ORDER BY 
+    sh.show_time, s.seat_number;
     
+    
+    -- searching the show id by using the movie title
+    SELECT 
+    sh.id AS show_id
+FROM 
+    shows sh
+INNER JOIN 
+    movies m ON sh.movie_id = m.id
+INNER JOIN 
+    screens sc ON sh.screen_id = sc.id
+WHERE 
+    m.title = 'Interstellar'
+ORDER BY 
+    sh.show_time;
+
+-- booking
+desc bookings;
 
 
 

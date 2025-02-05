@@ -2,6 +2,7 @@ package com.move.tickit.booking.usecase;
 
 import java.util.Scanner;
 
+import com.move.tickit.booking.exception.BookingException;
 import com.move.tickit.booking.exception.UserException;
 import com.move.tickit.booking.exception.VeiwShowsException;
 import com.move.tickit.booking.model.Role;
@@ -39,7 +40,7 @@ public class WelcomePage {
 
 	}
 	
-	public void lists() throws UserException, VeiwShowsException {
+	public void lists() throws UserException, VeiwShowsException, BookingException {
 		
 		System.out.println();
         System.out.println("1. Login");
