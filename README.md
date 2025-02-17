@@ -85,5 +85,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 This project is licensed under the MIT License.
 ```
-
-Feel free to replace the image link with the actual path or upload the ER diagram to your repository. Let me know if you'd like further adjustments!
